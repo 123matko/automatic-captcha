@@ -1,0 +1,87 @@
+{
+  "id": "64be18d3-5dc9-4ed8-9a5c-a060445a3b98",
+  "version": "2.0",
+  "name": "captcha-test",
+  "url": "http://localhost:4200",
+  "tests": [{
+    "id": "172e30ab-1a40-4383-b8e0-0eb5d9eeeca5",
+    "name": "autocaptcha",
+    "commands": [{
+      "id": "2bf86c88-af15-4419-b645-b4fb4fa1ce60",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7b420da4-799e-4f9f-92e8-44f90e36b556",
+      "comment": "",
+      "command": "select",
+      "target": "id=title",
+      "targets": [],
+      "value": "label=Miss"
+    }, {
+      "id": "d1f687b4-9435-4e58-ab30-267d0c917a99",
+      "comment": "",
+      "command": "type",
+      "target": "id=firstName",
+      "targets": [
+        ["id=firstName", "id"],
+        ["css=#firstName", "css:finder"],
+        ["xpath=//input[@id='firstName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "testhdfhfdhfh"
+    }, {
+      "id": "551830f3-078b-4153-b52b-88dadc0baedb",
+      "comment": "",
+      "command": "type",
+      "target": "id=lastName",
+      "targets": [
+        ["id=lastName", "id"],
+        ["css=#lastName", "css:finder"],
+        ["xpath=//input[@id='lastName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "gfdhfhgj"
+    }, {
+      "id": "e046356c-c147-4537-8759-15b39c46c70a",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [],
+      "value": "asnsdl@kdnfkd.com"
+    }, {
+      "id": "49580195-84ba-4b6d-8b42-7259b1c8a000",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [],
+      "value": "123"
+    }, {
+      "id": "40540c2e-c224-4b4a-a72f-462da74ab7cd",
+      "comment": "",
+      "command": "type",
+      "target": "id=confirmPassword",
+      "targets": [],
+      "value": "123"
+    }, {
+      "id": "69aba028-0e7c-4367-be25-cd7da01081d1",
+      "comment": "",
+      "command": "click",
+      "target": "id=acceptTerms",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "142ec26a-3aa9-4063-8c36-2a8250049294",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["172e30ab-1a40-4383-b8e0-0eb5d9eeeca5"]
+  }],
+  "urls": ["http://localhost:4200/"],
+  "plugins": []
+}
