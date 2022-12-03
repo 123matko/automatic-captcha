@@ -14,12 +14,12 @@ export class AppComponent  implements OnInit{
   title = 'automatic-captcha';
   constructor(private formBuilder: FormBuilder,private _el: ElementRef) { }
   isDisabled=true;
-    submitted = false;
-    public registerForm: FormGroup;
-    mouseup$: any;
+  submitted = false;
+  public registerForm: FormGroup;
   mousedown$: any;
-  mousemove$: any;
   mousehold$: any;
+  lastx: number;
+  lasty: number;
   x: number;
   y: number;
   numOfClicks: number;
@@ -44,22 +44,23 @@ export class AppComponent  implements OnInit{
         this.mousedown$.subscribe((e) => {
           this.x = e.x;
           this.y = e.y;
-          this.register();
-        })
-        this.mouseup$ = fromEvent(this._el.nativeElement, 'mouseup');
-        this.mouseup$.subscribe(_ => {
-          this.register();
-        })
-        this.mousedown$.subscribe(_ => {
           console.log('clicked');
           console.log(this.x,this.y);
-          this.numOfClicks++;
+          
+          if(this.lastx!=this.x||this.lasty!=this.y){
+            this.numOfClicks++;
+          }
           if(this.numOfClicks>6){
             this.isDisabled=false;
           }
-        });
+          this.lastx=e.x;
+          this.lasty=e.y;
+          console.log(this.numOfClicks);
+        })
+        
+        
        
-        this.register();
+       
     }
 
     // convenience getter for easy access to form fields
@@ -85,22 +86,5 @@ export class AppComponent  implements OnInit{
         this.submitted = false;
         this.registerForm.reset();
     }
-    register() {
-      try {
-        this.sub.unsubscribe();
-      } catch (err) {
-        
-      } finally {
-  
-      }
-  
-      let mousemove$ = fromEvent(this._el.nativeElement, 'mousemove');
-      mousemove$ = mousemove$.pipe(skipUntil(this.mousedown$));
-      mousemove$ = mousemove$.pipe(takeUntil(this.mouseup$));
-      this.sub = mousemove$.subscribe((e: any) => {
-        this.x = e.clientX;
-        this.y = e.clientY;
-        console.log(e.x, e.y);
-      })
-    }
+    
 }
