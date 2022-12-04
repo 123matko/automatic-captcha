@@ -1,7 +1,6 @@
 import { Component , OnInit, ElementRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fromEvent,  takeUntil,skipUntil } from 'rxjs';
-// import custom validator to validate that password and confirm password fields match
 import {MustMatch}  from './_helpers/must-match.validator';
 
 @Component({
@@ -39,7 +38,7 @@ export class AppComponent  implements OnInit{
         }, {
             validator: MustMatch('password', 'confirmPassword')
         });
-        
+        //register mousedown event = click
         this.mousedown$ = fromEvent(this._el.nativeElement, 'mousedown');
         this.mousedown$.subscribe((e) => {
           this.x = e.x;
@@ -56,11 +55,7 @@ export class AppComponent  implements OnInit{
           this.lastx=e.x;
           this.lasty=e.y;
           console.log(this.numOfClicks);
-        })
-        
-        
-       
-       
+        }) 
     }
 
     // convenience getter for easy access to form fields
